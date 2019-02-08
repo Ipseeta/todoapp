@@ -94,17 +94,15 @@ class App extends Component {
       <div className="App">
         <div>
           <div>
-              <form onSubmit={this.addItem}>
-                  <input
-                      placeholder="Enter Task"
-                      ref={c => {
-                        this.inputElement = c;
-                      }}
-                      value={this.state.currentItem.text}
-                      onChange={this.handleInput}
-                  />
-                  <button type='submit'>Add Task</button>
-              </form>
+            <input
+                  placeholder="Enter Task"
+                  ref={c => {
+                    this.inputElement = c;
+                  }}
+                  value={this.state.currentItem.text}
+                  onChange={this.handleInput}
+            />
+            <button onClick={this.addItem}>Add Task</button>
           </div>
         </div>
         <TodoItems entries={this.state.items} editItem={this.editItem} deleteItem={this.deleteItem}/>

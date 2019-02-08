@@ -7,7 +7,7 @@ class TodoItem extends Component {
       editMode: false
     }
   }
-  clickedEdit = e => {
+  toggleEdit = e => {
     e.preventDefault();
     this.setState({ editMode: !this.state.editMode });
   }
@@ -16,9 +16,10 @@ class TodoItem extends Component {
       e.preventDefault();
       if (e.keyCode === 13) {
         this.props.editItem(title,this.props.item._id);
-        this.clickedEdit(e);
+        this.toggleEdit(e);
       }
   }
+
   render() {
       const item = this.props.item;
       return (
@@ -32,7 +33,7 @@ class TodoItem extends Component {
                 }}
                 onKeyUp = {e => { this.callUpdateAPI(e,e.target.value) }}
             />
-      }{!this.state.editMode ?<button type='submit' onClick={this.clickedEdit}>Edit Task</button>: <button type='submit' onClick={e => { this.props.editItem(this.inputElement.value,this.props.item._id); this.clickedEdit(e); }}>Update</button>} <button type='submit' onClick={() => this.props.deleteItem(item._id)}>Delete Task</button>
+      }{!this.state.editMode ?<button type='submit' onClick={this.toggleEdit}>Edit Task</button>: <button type='submit' onClick={e => { this.props.editItem(this.inputElement.value,this.props.item._id); this.toggleEdit(e); }}>Update</button>} <button type='submit' onClick={() => this.props.deleteItem(item._id)}>Delete Task</button>
         </li>
       )
     }
