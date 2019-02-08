@@ -27,9 +27,12 @@ class TodoItem extends Component {
           :
             <input
                 defaultValue={item.title}
+                ref={c => {
+                    this.inputElement = c;
+                }}
                 onKeyUp = {e => { this.callUpdateAPI(e,e.target.value) }}
             />
-            }<button type='submit' onClick={this.clickedEdit}>Edit Task</button> <button type='submit' onClick={() => this.props.deleteItem(item._id)}>Delete Task</button>
+      }{!this.state.editMode ?<button type='submit' onClick={this.clickedEdit}>Edit Task</button>: <button type='submit' onClick={e => { this.props.editItem(this.inputElement.value,this.props.item._id); this.clickedEdit(e); }}>Update</button>} <button type='submit' onClick={() => this.props.deleteItem(item._id)}>Delete Task</button>
         </li>
       )
     }
