@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TodoItems from './TodoItems';
 import fetch from 'isomorphic-fetch';
-import './App.css';
 
 class App extends Component {
   constructor() {
@@ -91,7 +90,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div>
         <div>
           <div>
             <input
